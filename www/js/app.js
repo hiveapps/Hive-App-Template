@@ -5,9 +5,9 @@ hive.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
       
       
-  .state("home", {
+  .state("login", {
     url: "/",
-    templateUrl: "templates/welcomeHome.html",
+    templateUrl: "templates/login.html",
     controller: "MainCtrl",
   })
   
