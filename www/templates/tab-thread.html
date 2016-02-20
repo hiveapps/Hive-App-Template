@@ -1,11 +1,11 @@
 <div ng-controller="ThreadCtrl">
-	<div class="card text-xs-center" style="border: 1px solid grey; border-radius: 5px; margin-bottom: 3%;">
+	<div class="card text-xs-center" ng-repeat="val in rate" style="border: 1px solid grey; border-radius: 5px; margin-bottom: 3%;">
 		<div class="card-header" style="background-color: #d3d3d3; padding: 1%;">
 			<img class="card-img-top" data-src="..." alt="Card image" style="height: 75px; width: 75px;">
 		</div>
 		<div class="card-block" style="padding: 1%; min-height: 200px;">
 			<h4 class="card-title">Card Title</h4>
-			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			<p class="card-text">{{val.postDescription}}</p>
 		</div>
 		<div class="card-footer text-muted" style="background-color: #d3d3d3; padding: 2%;">
 			<button type="button" class="btn btn-primary btn-md">

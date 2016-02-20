@@ -12,6 +12,11 @@ hive.config(function($stateProvider, $urlRouterProvider) {
     controller: "MainCtrl",
   })
   
+  .state('blank', {
+    url: '/blank',
+    templateUrl: 'templates/blank.html',
+  })
+  
   .state('thread', {
     url: '/thread',
     templateUrl: 'templates/tab-thread.html',

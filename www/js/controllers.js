@@ -17,7 +17,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
       if (error) {
         console.log("Error creating user:", error);
       } else {
-        $state.go('thread');
+        $state.go('blank');
       }
     });
   }
@@ -29,7 +29,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        $state.go('thread');
+        $state.go('blank');
       }
     });
   }
@@ -87,7 +87,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
 
 
 //Add controller to add posts into firebase
-hive.controller('addController',function($scope,$firebaseArray, $state, postService){
+/*hive.controller('addController',function($scope,$firebaseArray, $state, postService){
 	var ref = new Firebase("https://10minute.firebaseio.com/");
   var postsRef = ref.child("posts");
   $scope.submitPost = function(){
@@ -113,17 +113,19 @@ hive.controller('addController',function($scope,$firebaseArray, $state, postServ
 
 //Thread controller used to display all posts.
 //This could be done better, may need to redo
-//hive.controller('ThreadCtrl',function($scope,$timeout){
-//  var ratesRef = new Firebase('https://10minute.firebaseio.com/posts');
+hive.controller('ThreadCtrl',function($scope,$timeout){
+  var ratesRef = new Firebase('https://10minute.firebaseio.com/posts');
   
-//  ratesRef.on("value", function (snapshot) {
-//    $timeout(function () {
-//      update(snapshot);
-//      console.log(snapshot);
-//    });
-//  });
+  ratesRef.on("value", function (snapshot) {
+    $timeout(function () {
+      update(snapshot);
+      console.log(snapshot);
+    });
+  });
   
-//  function update (snapshot) {
-//    $scope.rate = snapshot.val();
-//  }
-//});
+  function update (snapshot) {
+    $scope.rate = snapshot.val();
+  }
+});
+
+*/
