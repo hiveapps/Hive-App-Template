@@ -1,0 +1,1 @@
+var hive=angular.module("hive.services",[]);hive.factory("postService",function(e){var r=new Firebase("https://10minute.firebaseio.com/posts"),t=e(r),i={all:t,get:function(e){return t.$getRecord(e)}};return i});

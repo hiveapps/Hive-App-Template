@@ -7,7 +7,7 @@ hive.controller('MainCtrl', function() {
 
 //Totally functioning simple login
 hive.controller("LoginCtrl", function($scope, $firebaseAuth, $state){
-var users = new Firebase("https://10minute.firebaseio.com//");
+var users = new Firebase("https://10minute.firebaseio.com/");
 
   $scope.register = function(username, password){
     users.createUser({
@@ -83,3 +83,47 @@ var users = new Firebase("https://10minute.firebaseio.com//");
     $state.go('login');
   };
 });
+
+
+
+//Add controller to add posts into firebase
+hive.controller('addController',function($scope,$firebaseArray, $state, postService){
+	var ref = new Firebase("https://10minute.firebaseio.com/");
+  var postsRef = ref.child("posts");
+  $scope.submitPost = function(){
+
+      var newPostRef = postsRef.push();
+      newPostRef.set({
+        postDescription: $scope.postDescription
+      });
+    
+    //This resets the form to master which is null
+    //Still need to apply some time of form reset
+    //to the "Cancel" button, needs troubleshooting.
+    $scope.master= null;
+    
+      $scope.reset = function() {
+        $scope.postDescription = angular.copy($scope.master);
+        if ($scope.form) $scope.form.$setPristine();
+      };
+      $scope.reset();
+	};
+});
+
+
+//Thread controller used to display all posts.
+//This could be done better, may need to redo
+//hive.controller('ThreadCtrl',function($scope,$timeout){
+//  var ratesRef = new Firebase('https://10minute.firebaseio.com/posts');
+  
+//  ratesRef.on("value", function (snapshot) {
+//    $timeout(function () {
+//      update(snapshot);
+//      console.log(snapshot);
+//    });
+//  });
+  
+//  function update (snapshot) {
+//    $scope.rate = snapshot.val();
+//  }
+//});

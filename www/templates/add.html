@@ -1,0 +1,14 @@
+<div>
+	<form class="list" name="postForm" method="POST" ng-controller="addController">
+		<label class="item item-input item-stacked-label myBorder" style="border: none;">
+			<textarea rows="10" cols="10" placeholder="Describe your missed connection!" ng-model="postDescription" style="resize: none; background-color: transparent;"></textarea>
+		</label>
+		<label class="item" style="border: none; background-color: transparent;">
+		<button class="button button-block button-positive" ng-model="addButton" ng-disabled="!postDescription" ng-click="submitPost(); reset()">
+		Post
+		</button>
+		</label>
+	</form>
+	
+	
+</div>
