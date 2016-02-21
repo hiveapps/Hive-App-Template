@@ -131,7 +131,7 @@ hive.controller('ThreadCtrl',function($scope,$timeout){
 */
 
 
-hive.controller('ChatDetailCtrl',function($scope,$firebaseArray, $state, $stateParams, Chats, messageService){
+/*hive.controller('ChatDetailCtrl',function($scope,$firebaseArray, $state, $stateParams, Chats, messageService){
 	
   $scope.chat = Chats.get($stateParams.chatId);
   
@@ -150,4 +150,41 @@ hive.controller('ChatDetailCtrl',function($scope,$firebaseArray, $state, $stateP
 	};
   //Message return
   $scope.messages = messageService.all;
+}); */
+
+hive.controller('ChatDetailCtrl',function($scope, $firebaseArray, $state, $timeout, messageService){
+	
+  var ref = new Firebase("https://10minute.firebaseio.com/");
+  var messagesRef = ref.child("messages");
+  $scope.submitMessage = function(){
+
+      var newMessageRef = messagesRef.push();
+      newMessageRef.set({
+        messageDescription: $scope.messageDescription
+      });
+    
+    //This resets the form to master which is null
+    //Still need to apply some time of form reset
+    //to the "Cancel" button, needs troubleshooting.
+    $scope.master= null;
+    
+      $scope.reset = function() {
+        $scope.messageDescription = angular.copy($scope.master);
+        if ($scope.form) $scope.form.$setPristine();
+      };
+      $scope.reset();
+	};
+  
+  var ratesRef = new Firebase('https://10minute.firebaseio.com/messages');
+  
+  ratesRef.on("value", function (snapshot) {
+    $timeout(function () {
+      update(snapshot);
+      console.log(snapshot);
+    });
+  });
+  
+  function update (snapshot) {
+    $scope.messages = snapshot.val();
+  }
 });

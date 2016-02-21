@@ -1,11 +1,16 @@
-<div ng-controller="chatCtrl" >
-	<p>Name : <input type="text" ng-model="newmessage.user"></p>
-	<p>Message :<input type="text" ng-model="newmessage.text"></p>
-	<button ng-click="inserisci(newmessage)">Send</button>
+<div ng-controller="ChatDetailCtrl">
 	
-  	<ul>
-  		<li ng-repeat="message in messages">
-  			{{message.user}} dice :{{message.text}}
-  		</li>
-  	</ul>
+	<input placeholder="Send Message..." ng-model="messageDescription" />
+	
+	<button type="button" class="btn btn-primary" ng-model="sendMessageButton" ng-disabled="!messageDescription" ng-click="submitMessage(); reset()">
+		Send
+	</button>
+	
+	<div class="card text-xs-center" ng-repeat="val in messages" style="border: 1px solid grey; border-radius: 5px; margin-top: 3%;">
+		<div class="card-block" style="padding: 1%; min-height: 100px;">
+			<p class="card-text">{{val.messageDescription}}</p>
+		</div>
+	</div>
+	
+	
 </div>
