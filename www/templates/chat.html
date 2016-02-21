@@ -1,7 +1,7 @@
 <div ng-controller="chatCtrl" >
-	<p>Nome : <input type="text" ng-model="newmessage.user"></p>
-	<p>Messaggio :<input type="text" ng-model="newmessage.text"></p>
-	<button ng-click="inserisci(newmessage)">Invia</button>
+	<p>Name : <input type="text" ng-model="newmessage.user"></p>
+	<p>Message :<input type="text" ng-model="newmessage.text"></p>
+	<button ng-click="inserisci(newmessage)">Send</button>
 	
   	<ul>
   		<li ng-repeat="message in messages">

@@ -14,9 +14,9 @@ hive.factory('postService', function($firebaseArray) {
 });
 
 hive.factory('Message', ['$firebase',
-	function($firebase) {
+	function($firebase, $firebaseArray, $firebaseObject) {
 		var ref = new Firebase('https://10minute.firebaseio.com/');
-		var messages = $firebase(ref.child('messages')).$asArray();
+		var messages = $firebaseArray(ref.child('messages'));
  
 		var Message = {
 			all: messages,
@@ -24,7 +24,7 @@ hive.factory('Message', ['$firebase',
 				return messages.$add(message);
 			},
 			get: function (messageId) {
-				return $firebase(ref.child('messages').child(messageId)).$asObject();
+				return $firebaseObject(ref.child('messages').child(messageId));
 			},
 			delete: function (message) {
 				return messages.$remove(message);
