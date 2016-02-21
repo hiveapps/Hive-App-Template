@@ -1,16 +1,12 @@
 <div ng-controller="LoginCtrl" style="text-align: center;">
 	<div class="list" style="margin-bottom: 5%;">
-		<span style="border-left: none; border-right: none; width: 100%;">
-			<input class="has-header" type="text" placeholder="Email" ng-model="username" style="width: 90%;">
-		</span>
-		<span style="border-left: none; border-right: none; width: 100%;">
-			<input type="password" placeholder="Password" ng-model="password" style="width: 90%;">
-		</span>
+		<input class="has-header" type="text" placeholder="Email" ng-model="username" style="width: 90%; margin-bottom: 3%;" />
+		<input type="password" placeholder="Password" ng-model="password" style="width: 90%; margin-bottom: 3%;" />
 	</div>
-	<button ng-click="login(username, password)"> 
+	<button type="button" class="btn btn-primary" ng-click="login(username, password)"> 
 		Login 
 	</button>
-	<button ng-click="register(username, password)"> 
+	<button type="button" class="btn btn-danger" ng-click="register(username, password)"> 
 		Sign Up 
 	</button>
 	

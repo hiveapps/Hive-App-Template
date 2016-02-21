@@ -129,3 +129,11 @@ hive.controller('ThreadCtrl',function($scope,$timeout){
 });
 
 */
+
+
+hive.controller('chatCtrl', ['$scope','Message', function($scope,Message){
+
+    $scope.name = "Coder01";
+
+    $scope.messages= Message.all;
+}]);

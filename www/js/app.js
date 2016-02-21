@@ -26,6 +26,11 @@ hive.config(function($stateProvider, $urlRouterProvider) {
     url: '/add',
     templateUrl: 'templates/add.html',
   })
+  
+  .state('chat', {
+    url: '/chat',
+    templateUrl: 'templates/chat.html',
+  })
 
     
     $urlRouterProvider.otherwise("/");

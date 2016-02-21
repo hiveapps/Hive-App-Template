@@ -2,7 +2,11 @@
 	
 	<h1>Welcome to Hive!</h1>
 	
-	<button href="#" ng-click="ref.unauth(); logout()">
+	<button type="button" class="btn btn-danger" href="#" ng-click="ref.unauth(); logout()">
 		Logout
+	</button>
+	
+	<button type="button" class="btn btn-primary" ui-sref="chat" ng-click="ref.unauth(); logout()">
+		chat
 	</button>
 </div>

@@ -12,3 +12,20 @@ hive.factory('postService', function($firebaseArray) {
 	};
 	return postService;
 });
+
+hive.factory('Message', [function() {
+
+	var messages = [{'name':'Pippo','text':'Hello'},
+					{'name':'Pluto','text':'Hello'},
+					{'name':'Pippo','text':'how are you ?'},
+					{'name':'Pluto','text':'fine thanks'},
+					{'name':'Pippo','text':'Bye'},
+					{'name':'Pluto','text':'Bye'}];
+
+	var Message = {
+		all: messages
+	};
+
+	return Message;
+
+}]);
