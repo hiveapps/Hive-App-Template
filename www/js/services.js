@@ -13,25 +13,15 @@ hive.factory('postService', function($firebaseArray) {
 	return postService;
 });
 
-hive.factory('Message', ['$firebase',
-	function($firebase, $firebaseArray, $firebaseObject) {
-		var ref = new Firebase('https://10minute.firebaseio.com/');
-		var messages = $firebaseArray(ref.child('messages'));
- 
-		var Message = {
-			all: messages,
-			create: function (message) {
-				return messages.$add(message);
-			},
-			get: function (messageId) {
-				return $firebaseObject(ref.child('messages').child(messageId));
-			},
-			delete: function (message) {
-				return messages.$remove(message);
-			}
-		};
- 
-		return Message;
- 
-	}
-	]);
+//Messaging Service
+hive.factory('messageService', function($firebaseArray) {
+	var fb = new Firebase("https://10minute.firebaseio.com/messages");
+	var messages = $firebaseArray(fb);
+	var messageService= {
+		all: messages,
+		get: function(messageID) {
+			return messages.$getRecord(messageID);
+		}
+	};
+	return messageService;
+});
