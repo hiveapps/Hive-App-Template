@@ -49,7 +49,7 @@ hive.config(function($stateProvider, $urlRouterProvider) {
             }
         }
     })
-    .state('hive.chat', {
+    .state('chat', {
         url: "/chat",
         views: {
             'content@': {
