@@ -5,32 +5,58 @@ hive.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   
   // setup an abstract state for the tabs directive   
-      
   .state("login", {
-    url: "/",
-    templateUrl: "templates/login.html",
-    controller: "MainCtrl",
-  })
-  
-  .state('blank', {
-    url: '/blank',
-    templateUrl: 'templates/blank.html',
-  })
-  
-  .state('thread', {
-    url: '/thread',
-    templateUrl: 'templates/tab-thread.html',
-  })
-  
-  .state('add', {
-    url: '/add',
-    templateUrl: 'templates/add.html',
-  })
-  
-  .state('chat', {
-    url: '/chat',
-    templateUrl: 'templates/chat.html',
-  })
+        url: "/",
+        views: {
+            'content@': {
+                templateUrl: 'templates/login.html',
+                controller: "MainCtrl"
+            }
+        }
+    })
+  .state('hive', {
+        abstract: true,
+        views: {
+            'header': {
+                templateUrl: 'templates/header.html'
+            },
+            'footer': {
+                templateUrl: 'templates/tabs.html'
+            }
+        }
+    })
+    .state('hive.home', {
+        url: "/home",
+        views: {
+            'content@': {
+                templateUrl: 'templates/blank.html'
+            }
+        }
+    })
+    .state('hive.thread', {
+        url: "/thread",
+        views: {
+            'content@': {
+                templateUrl: 'templates/thread.html'
+            }
+        }
+    })
+    .state('hive.add', {
+        url: "/add",
+        views: {
+            'content@': {
+                templateUrl: 'templates/add.html'
+            }
+        }
+    })
+    .state('hive.chat', {
+        url: "/chat",
+        views: {
+            'content@': {
+                templateUrl: 'templates/chat.html'
+            }
+        }
+    })
 
     
     $urlRouterProvider.otherwise("/");

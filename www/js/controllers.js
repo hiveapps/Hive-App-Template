@@ -17,7 +17,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
       if (error) {
         console.log("Error creating user:", error);
       } else {
-        $state.go('blank');
+        $state.go('hive.home');
       }
     });
   }
@@ -29,7 +29,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        $state.go('blank');
+        $state.go('hive.home');
       }
     });
   }
@@ -51,10 +51,10 @@ var users = new Firebase("https://10minute.firebaseio.com/");
     switch(authData.provider) {
       case 'password':
         return authData.password.email;
-      case 'twitter':
+      /*case 'twitter':
         return authData.twitter.displayName;
       case 'facebook':
-        return authData.facebook.displayName;
+        return authData.facebook.displayName;*/
     }
   }
   
@@ -87,7 +87,7 @@ var users = new Firebase("https://10minute.firebaseio.com/");
 
 
 //Add controller to add posts into firebase
-/*hive.controller('addController',function($scope,$firebaseArray, $state, postService){
+hive.controller('addController',function($scope){
 	var ref = new Firebase("https://10minute.firebaseio.com/");
   var postsRef = ref.child("posts");
   $scope.submitPost = function(){
@@ -128,11 +128,12 @@ hive.controller('ThreadCtrl',function($scope,$timeout){
   }
 });
 
-*/
 
-hive.controller('ChatDetailCtrl',function($scope, $firebaseArray, $state, $timeout, messageService){
+//Chats Page Controller
+hive.controller('ChatDetailCtrl',function($scope, $firebaseArray, $state, $timeout){
 	
   var ref = new Firebase("https://10minute.firebaseio.com/");
+  var messageList = $('#chat-detail');
   var messagesRef = ref.child("messages");
   $scope.submitMessage = function(){
 
@@ -165,4 +166,7 @@ hive.controller('ChatDetailCtrl',function($scope, $firebaseArray, $state, $timeo
   function update (snapshot) {
     $scope.messages = snapshot.val();
   }
+  
+  //SCROLL TO BOTTOM OF MESSAGE LIST
+    messageList[0].scrollTop = messageList[0].scrollHeight;
 });

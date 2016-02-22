@@ -29,7 +29,7 @@
     <script src="js/services.js"></script>
   </head>
 
-  <body>
+  <!--<body>
     <nav class="navbar navbar-default" style="border-radius: 0px;">
       <div>
         <a ui-sref="home" class="navbar-brand">Hive</a>
@@ -38,6 +38,12 @@
     <div class="container">
       <div ui-view></div>
     </div>
+  </body>-->
+  
+  <body>
+    <header ui-view="header"></header>
+    <div class="container"><main ui-view="content"></main></div>
+    <footer ui-view="footer"></footer>
   </body>
 
 </html>
