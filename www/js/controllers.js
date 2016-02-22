@@ -130,28 +130,6 @@ hive.controller('ThreadCtrl',function($scope,$timeout){
 
 */
 
-
-/*hive.controller('ChatDetailCtrl',function($scope,$firebaseArray, $state, $stateParams, Chats, messageService){
-	
-  $scope.chat = Chats.get($stateParams.chatId);
-  
-  $scope.sendMessage = function(){
-		$scope.newMessage = messageService.all;
-		$scope.newMessage.$add({
-			messageDetails: $scope.messageDetails
-		});
-    $scope.master= null;
-    
-      $scope.reset = function() {
-        $scope.messageDetails = angular.copy($scope.master);
-        if ($scope.form) $scope.form.$setPristine();
-      };
-      $scope.reset();
-	};
-  //Message return
-  $scope.messages = messageService.all;
-}); */
-
 hive.controller('ChatDetailCtrl',function($scope, $firebaseArray, $state, $timeout, messageService){
 	
   var ref = new Firebase("https://10minute.firebaseio.com/");
